@@ -14,7 +14,7 @@ To  see how the system work, just look at the `Method.bmp` ,that's a workflow of
 
   The first part is the **ID** of articles, follow by a  comma.
 
-  The Second part is the content of article which should not have any comma (*because csv use comma to separate the different part in `.csv`)
+  The Second part is the content of article which should not have any comma (*because csv use comma to separate the different part in `.csv`* )
 
 - In the `input/` folder, we need an `ards_dbdata.csv` file to save the known ADRs of specific **Medicine**. It's content like this:
 
