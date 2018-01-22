@@ -1,20 +1,13 @@
-@source
-ards_dbdata(
-	@key
-	med_name text,
-	@key
-	ard_name text
-).
 
 articles(
 	@key
 	@distributed_by
     id      text,
     @searchable
-    content text
+    content text,
+	url_from text
 ).
 
-@source
 sentence(
 	@key
     @distributed_by
@@ -32,186 +25,11 @@ sentence(
     dep_tokens     int[]
 ).
 
-function nlp_markup over (
+function nlp_fenci over (
         doc_id text,
         content text
-    ) returns rows like sentence
-    implementation "udf/nlp_markup.sh" handles tsv lines.
+) returns rows like sentence
+implementation "udf/fenci.py" handles tsv lines.
 
-sentence += nlp_markup(doc_id, content) :-
-    articles(doc_id, content).
-
-sentences(
-    doc_id          text,
-    sentence_index  int,
-    sentence_text   text,
-    tokens          text[],
-    lemmas          text[],
-    pos_tags        text[],
-    ner_tags        text[],
-    doc_offects     int[],
-    dep_types       text[],
-    dep_tokens      int[]
-).
-
-function modify_sentences over(
-	doc_id          text,
-	sentence_index  int,
-	sentence_text   text,
-	tokens          text[],
-	lemmas          text[],
-	pos_tags        text[],
-	ner_tags        text[],
-	doc_offects     int[],
-	dep_types       text[],
-	dep_tokens      int[]
-) returns rows like sentences
-implementation "udf/reco_med_ard_guo.py" handles tsv lines.
-
-sentences += modify_sentences(
-doc_id, sentence_index, sentence_text, tokens, lemmas, pos_tags, ner_tags,
-doc_offects, dep_types, dep_tokens ) :-
-sentence(doc_id, sentence_index, sentence_text, tokens, lemmas, pos_tags, ner_tags,
-doc_offects, dep_types, dep_tokens).
-
-ards_mention(
-    mention_id      text,
-    mention_text    text,
-    doc_id          text,
-    sentence_index  int,
-    begin_index     int,
-    end_index       int
-).
-
-medicine_mention(
-    mention_id      text,
-    mention_text    text,
-    doc_id          text,
-    sentence_index  int,
-    begin_index     int,
-    end_index       int
-).
-
-function map_ards_mention over(
-    doc_id          text,
-    sentence_index  int,
-    tokens          text[],
-    ner_tags        text[]
-)returns rows like ards_mention
-implementation "udf/map_ards_mention.py" handles tsv lines.
-
-function map_medicine_mention over(
-    doc_id          text,
-    sentence_index  int,
-    tokens          text[],
-    ner_tags        text[]
-)returns rows like ards_mention
-implementation "udf/map_medicine_mention.py" handles tsv lines.
-
-ards_mention += map_ards_mention(
-doc_id, sentence_index, tokens, ner_tags
-) :-
-sentences(doc_id,sentence_index, _, tokens, _, _, ner_tags, _, _, _).
-
-
-medicine_mention += map_medicine_mention(
-doc_id, sentence_index, tokens, ner_tags
-) :-
-sentences(doc_id,sentence_index, _, tokens, _, _, ner_tags, _, _, _).
-
-ards_candidate(
-    p1_id   text,
-    p1_name text,
-    p2_id   text,
-    p2_name text
-).
-
-
-function map_ards_candidate over(
-    p1_id       text,
-    p1_name     text,
-    p2_id       text,
-    p2_name     text
-)returns rows like ards_candidate
-implementation "udf/map_ards_candidate.py" handles tsv lines.
-
-ards_candidate += map_ards_candidate(p1,p1_name,p2,p2_name) :-
-medicine_mention(p1, p1_name, same_doc, same_sentence, p1_begin, _),
-ards_mention(p2, p2_name, same_doc, same_sentence, p2_begin, _).
-
-@extraction
-ards_feature(
-	@key
-	@references(relation="has_effect", column="p1_id", alias="has_effect")
-    p1_id   text,
-	@key
-    @references(relation="has_effect", column="p1_id", alias="has_effect")
-    p2_id   text,
-	@key
-    feature text
-).
-
-function extract_ards_features over(
-	p1_id			text,
-	p2_id			text,
-	p1_begin_index 	int,
-	p1_end_index	int,
-	p2_begin_index 	int,
-	p2_end_index	int,
-	doc_id			text,
-	sent_index		int,
-	tokens			text[],
-	lemmas			text[],
-	pos_tags		text[],
-	ner_tags		text[],
-	dep_types		text[],
-	dep_tokens		int[]
-)returns rows like ards_feature
-implementation "udf/extract_ards_features.py" handles tsv lines.
-
-
-ards_feature += extract_ards_features(
-p1_id, p2_id, p1_begin_index, p1_end_index, p2_begin_index, p2_end_index,
-doc_id, sent_index, tokens, lemmas, pos_tags, ner_tags, dep_types, dep_tokens
-) :-
-medicine_mention(p1_id, _, doc_id, sent_index, p1_begin_index, p1_end_index),
-ards_mention(p2_id, _, doc_id, sent_index, p2_begin_index, p2_end_index),
-sentences(doc_id, sent_index, _, tokens, lemmas, pos_tags, ner_tags, _, dep_types, dep_tokens).
-
-@extraction
-ards_label(
-	@key
-	@references(relation="has_effect", column="p1_id", alias="has_effect")
-	p1_id	text,
-	@key
-	@references(relation="has_effect", column="p2_id", alias="has_effect")
-	p2_id	text,
-	@navigable
-	label	int,
-	@navigable
-	rule_id	text
-).
-
-ards_label(p1, p2, 0, NULL) :- ards_candidate(p1, _,p2, _).
-
-ards_label(p1, p2, 3, "from_dbdata") :-
-	ards_candidate(p1, p1_name, p2, p2_name), ards_dbdata(n1,n2),
-	[ lower(n1) = lower(p1_name), lower(n2)= lower(p2_name)].
-
-ards_label_resolved(p1_id, p2_id, SUM(vote)) :- ards_label(p1_id, p2_id, vote, rule_id).
-
-
-@extraction
-has_effect?(
-	p1_id	text,
-	p2_id	text
-).
-
-has_effect(p1_id, p2_id) = if l>0 then TRUE
-	else if l<0 then FALSE
-	else NULL end :- ards_label_resolved(p1_id, p2_id, l).
-
-@weight(f)
-has_effect(p1_id, p2_id) :-
-	ards_candidate(p1_id, _, p2_id, _),
-	ards_feature(p1_id, p2_id, f).
+sentence += nlp_fenci(doc_id, content) :-
+    articles(doc_id, content, _).

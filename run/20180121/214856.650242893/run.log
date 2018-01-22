@@ -1,0 +1,44 @@
+2018-01-21 21:48:59.035666 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do articles
+2018-01-21 21:48:59.035833 # run/20180121/214856.650242893/plan.sh
+2018-01-21 21:48:59.035879 # execution plan for data/articles
+2018-01-21 21:48:59.035920 
+2018-01-21 21:48:59.035956 ## process/init/app ##########################################################
+2018-01-21 21:48:59.035993 # Done: N/A
+2018-01-21 21:48:59.036033 process/init/app/run.sh
+2018-01-21 21:48:59.036077 ++ dirname process/init/app/run.sh
+2018-01-21 21:48:59.036118 + cd process/init/app
+2018-01-21 21:48:59.036159 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/init/app
+2018-01-21 21:48:59.036201 + DEEPDIVE_CURRENT_PROCESS_NAME=process/init/app
+2018-01-21 21:48:59.036241 + deepdive db init
+2018-01-21 21:48:59.093183 dropdb: database removal failed: ERROR:  database "ADR2" does not exist
+2018-01-21 21:48:59.940613 + cd /home/xuyang/Projects/ADR2
+2018-01-21 21:48:59.940765 + [[ -r schema.sql ]]
+2018-01-21 21:48:59.940810 + [[ -x input/init.sh ]]
+2018-01-21 21:48:59.941042 mark_done process/init/app
+2018-01-21 21:48:59.949977 ##############################################################################
+2018-01-21 21:48:59.950128 
+2018-01-21 21:48:59.950194 
+2018-01-21 21:48:59.950263 ## process/init/relation/articles ############################################
+2018-01-21 21:48:59.950322 # Done: N/A
+2018-01-21 21:48:59.950383 process/init/relation/articles/run.sh
+2018-01-21 21:48:59.953209 ++ dirname process/init/relation/articles/run.sh
+2018-01-21 21:48:59.954423 + cd process/init/relation/articles
+2018-01-21 21:48:59.954562 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-21 21:48:59.954665 + DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-21 21:48:59.954726 + deepdive create table articles
+2018-01-21 21:49:00.126226 NOTICE:  table "articles" does not exist, skipping
+2018-01-21 21:49:00.189184 CREATE TABLE
+2018-01-21 21:49:00.191125 + deepdive load articles
+2018-01-21 21:49:00.278640 Loading articles from input/articles.csv (csv format)
+2018-01-21 21:49:00.405052 COPY 20
+2018-01-21 21:49:00.409830 mark_done process/init/relation/articles
+2018-01-21 21:49:00.418162 ##############################################################################
+2018-01-21 21:49:00.418327 
+2018-01-21 21:49:00.418374 
+2018-01-21 21:49:00.418425 ## data/articles #############################################################
+2018-01-21 21:49:00.418471 # Done: N/A
+2018-01-21 21:49:00.418519 # no-op
+2018-01-21 21:49:00.418569 mark_done data/articles
+2018-01-21 21:49:00.427191 ##############################################################################
+2018-01-21 21:49:00.427343 
+2018-01-21 21:49:00.427391 

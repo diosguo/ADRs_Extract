@@ -1,0 +1,73 @@
+2018-01-22 09:57:06.992938 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 09:57:06.993063 # run/20180122/095705.719252887/plan.sh
+2018-01-22 09:57:06.993092 # execution plan for data/sentence
+2018-01-22 09:57:06.993130 
+2018-01-22 09:57:06.993165 : ## process/init/app ##########################################################
+2018-01-22 09:57:06.993205 : # Done: 2018-01-21T21:48:59+0800 (12h 8m 6s ago)
+2018-01-22 09:57:06.993244 : process/init/app/run.sh
+2018-01-22 09:57:06.993289 : mark_done process/init/app
+2018-01-22 09:57:06.993332 : ##############################################################################
+2018-01-22 09:57:06.993376 
+2018-01-22 09:57:06.993420 
+2018-01-22 09:57:06.993463 : ## process/init/relation/articles ############################################
+2018-01-22 09:57:06.993507 : # Done: 2018-01-21T22:13:18+0800 (11h 43m 47s ago)
+2018-01-22 09:57:06.993552 : process/init/relation/articles/run.sh
+2018-01-22 09:57:06.993597 : mark_done process/init/relation/articles
+2018-01-22 09:57:06.993641 : ##############################################################################
+2018-01-22 09:57:06.993685 
+2018-01-22 09:57:06.993730 
+2018-01-22 09:57:06.993774 : ## data/articles #############################################################
+2018-01-22 09:57:06.993820 : # Done: 2018-01-21T22:13:18+0800 (11h 43m 47s ago)
+2018-01-22 09:57:06.993865 : # no-op
+2018-01-22 09:57:06.993910 : mark_done data/articles
+2018-01-22 09:57:06.993954 : ##############################################################################
+2018-01-22 09:57:06.994000 
+2018-01-22 09:57:06.994044 
+2018-01-22 09:57:06.994088 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 09:57:06.994132 # Done: 2018-01-22T09:55:55+0800 (1m 10s ago)
+2018-01-22 09:57:06.994176 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 09:57:06.994220 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 09:57:06.994263 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 09:57:06.994308 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 09:57:06.994353 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 09:57:06.994399 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 09:57:06.994444 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 09:57:06.994490 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 09:57:06.994537 FROM articles R0
+2018-01-22 09:57:06.994582         
+2018-01-22 09:57:06.994627           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 09:57:07.005236 Executing with the following configuration:
+2018-01-22 09:57:07.005381  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 09:57:07.005439  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 09:57:07.005498  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 09:57:07.005705  output_relation_tmp=dd_tmp_sentence
+2018-01-22 09:57:07.005782 
+2018-01-22 09:57:07.296091 CREATE TABLE
+2018-01-22 09:57:07.665846 CREATE TABLE
+2018-01-22 09:57:07.755701 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 09:57:07.755842 FROM articles R0
+2018-01-22 09:57:07.755885         
+2018-01-22 09:57:07.755921           '
+2018-01-22 09:57:07.789769 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 09:57:09.667881 Building prefix dict from the default dictionary ...
+2018-01-22 09:57:09.668943 Loading model from cache /tmp/jieba.cache
+2018-01-22 09:57:10.012082 Loading model cost 0.344 seconds.
+2018-01-22 09:57:10.012605 Prefix dict has been built succesfully.
+2018-01-22 09:57:11.016208 COPY 20
+2018-01-22 09:57:11.021493 Replacing sentence with dd_tmp_sentence
+2018-01-22 09:57:11.155125 DROP TABLE
+2018-01-22 09:57:11.303925 ALTER TABLE
+2018-01-22 09:57:11.447781 ALTER TABLE
+2018-01-22 09:57:11.592197 DROP TABLE
+2018-01-22 09:57:11.715604 ANALYZE
+2018-01-22 09:57:11.719814 mark_done process/ext_sentence_by_nlp_fenci
+2018-01-22 09:57:11.727787 ##############################################################################
+2018-01-22 09:57:11.727928 
+2018-01-22 09:57:11.727969 
+2018-01-22 09:57:11.728005 ## data/sentence #############################################################
+2018-01-22 09:57:11.728046 # Done: 2018-01-22T09:55:55+0800 (1m 10s ago)
+2018-01-22 09:57:11.728085 # no-op
+2018-01-22 09:57:11.728119 mark_done data/sentence
+2018-01-22 09:57:11.736491 ##############################################################################
+2018-01-22 09:57:11.736662 
+2018-01-22 09:57:11.736712 

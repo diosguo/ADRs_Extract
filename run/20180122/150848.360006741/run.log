@@ -1,0 +1,95 @@
+2018-01-22 15:08:49.521684 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 15:08:49.521810 # run/20180122/150848.360006741/plan.sh
+2018-01-22 15:08:49.521851 # execution plan for data/sentence
+2018-01-22 15:08:49.521890 
+2018-01-22 15:08:49.521929 : ## process/init/app ##########################################################
+2018-01-22 15:08:49.521973 : # Done: 2018-01-21T21:48:59+0800 (17h 19m 49s ago)
+2018-01-22 15:08:49.522014 : process/init/app/run.sh
+2018-01-22 15:08:49.522053 : mark_done process/init/app
+2018-01-22 15:08:49.522097 : ##############################################################################
+2018-01-22 15:08:49.522138 
+2018-01-22 15:08:49.522179 
+2018-01-22 15:08:49.522221 : ## process/init/relation/articles ############################################
+2018-01-22 15:08:49.522262 : # Done: 2018-01-22T11:26:01+0800 (3h 42m 47s ago)
+2018-01-22 15:08:49.522300 : process/init/relation/articles/run.sh
+2018-01-22 15:08:49.522344 : mark_done process/init/relation/articles
+2018-01-22 15:08:49.522387 : ##############################################################################
+2018-01-22 15:08:49.522430 
+2018-01-22 15:08:49.522473 
+2018-01-22 15:08:49.522516 : ## data/articles #############################################################
+2018-01-22 15:08:49.522559 : # Done: 2018-01-22T11:26:01+0800 (3h 42m 47s ago)
+2018-01-22 15:08:49.522603 : # no-op
+2018-01-22 15:08:49.522645 : mark_done data/articles
+2018-01-22 15:08:49.522688 : ##############################################################################
+2018-01-22 15:08:49.522731 
+2018-01-22 15:08:49.522773 
+2018-01-22 15:08:49.522817 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 15:08:49.522859 # Done: 2018-01-22T14:58:16+0800 (10m 32s ago)
+2018-01-22 15:08:49.522902 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:08:49.522943 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:08:49.522986 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:49.523029 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:49.523072 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:49.523113 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:08:49.523151 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:08:49.523194 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:08:49.523237 FROM articles R0
+2018-01-22 15:08:49.523280         
+2018-01-22 15:08:49.523350           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 15:08:49.534916 Executing with the following configuration:
+2018-01-22 15:08:49.535066  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 15:08:49.535217  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 15:08:49.535566  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 15:08:49.535651  output_relation_tmp=dd_tmp_sentence
+2018-01-22 15:08:49.535791 
+2018-01-22 15:08:49.793629 CREATE TABLE
+2018-01-22 15:08:50.163247 CREATE TABLE
+2018-01-22 15:08:50.240748 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:08:50.240905 FROM articles R0
+2018-01-22 15:08:50.240952         
+2018-01-22 15:08:50.240994           '
+2018-01-22 15:08:50.287786 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 15:08:52.724714 Building prefix dict from the default dictionary ...
+2018-01-22 15:08:52.726212 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:08:52.969171 Building prefix dict from the default dictionary ...
+2018-01-22 15:08:52.970343 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:08:52.994720 Building prefix dict from the default dictionary ...
+2018-01-22 15:08:52.996537 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:08:53.185528 Loading model cost 0.461 seconds.
+2018-01-22 15:08:53.186097 Prefix dict has been built succesfully.
+2018-01-22 15:08:53.323121 Loading model cost 0.354 seconds.
+2018-01-22 15:08:53.323719 Prefix dict has been built succesfully.
+2018-01-22 15:08:53.337244 Traceback (most recent call last):
+2018-01-22 15:08:53.337444   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 15:08:53.337494     content='text',
+2018-01-22 15:08:53.337539   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 15:08:53.337584     for out_row in generator(**row._asdict()):
+2018-01-22 15:08:53.337630   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 32, in extract
+2018-01-22 15:08:53.337676     new_sent.expand(sent.split('。'))
+2018-01-22 15:08:53.337720 AttributeError: 'list' object has no attribute 'expand'
+2018-01-22 15:08:53.426545 Traceback (most recent call last):
+2018-01-22 15:08:53.426815   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 15:08:53.426962     content='text',
+2018-01-22 15:08:53.427068   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 15:08:53.427231     for out_row in generator(**row._asdict()):
+2018-01-22 15:08:53.427353   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 32, in extract
+2018-01-22 15:08:53.427466     new_sent.expand(sent.split('。'))
+2018-01-22 15:08:53.427604 AttributeError: 'list' object has no attribute 'expand'
+2018-01-22 15:08:53.486233 Loading model cost 0.491 seconds.
+2018-01-22 15:08:53.486428 Prefix dict has been built succesfully.
+2018-01-22 15:08:53.671171 Traceback (most recent call last):
+2018-01-22 15:08:53.671366   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 15:08:53.671412     content='text',
+2018-01-22 15:08:53.671451   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 15:08:53.671486     for out_row in generator(**row._asdict()):
+2018-01-22 15:08:53.671524   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 32, in extract
+2018-01-22 15:08:53.671558     new_sent.expand(sent.split('。'))
+2018-01-22 15:08:53.671596 AttributeError: 'list' object has no attribute 'expand'
+2018-01-22 15:08:53.698389 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (539) - 没有那个进程
+2018-01-22 15:08:53.698538 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (540) - 没有那个进程
+2018-01-22 15:08:53.698575 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (552) - 没有那个进程
+2018-01-22 15:08:53.698606 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (553) - 没有那个进程
+2018-01-22 15:08:53.700850 COPY 0
+2018-01-22 15:08:53.704269 [ERROR] command='"$DEEPDIVE_APP"/udf/fenci.py': PID 539: finished with non-zero exit status (0)
+2018-01-22 15:08:53.705562 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138:   545 已终止               mkmimo process-*.output \> output_computed-*
+2018-01-22 15:08:53.705713 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138:   546 已终止               deepdive-load "$output_relation_tmp" output_computed-*

@@ -1,0 +1,70 @@
+2018-01-21 21:48:37.941957 "run/LATEST.COMPILE" -> "20180121/214837.893558104"
+2018-01-21 21:48:37.942076 "run/RUNNING.COMPILE" -> "20180121/214837.893558104"
+2018-01-21 21:48:37.942104 Parsing DeepDive application (/home/xuyang/Projects/ADR2) to generate:
+2018-01-21 21:48:37.942248  run/compiled/schema.json
+2018-01-21 21:48:37.942321   from app.ddlog
+2018-01-21 21:48:39.060792  run/compiled/deepdive.conf
+2018-01-21 21:48:39.060993   from app.ddlog
+2018-01-21 21:48:40.467129  run/compiled/deepdive.conf.json
+2018-01-21 21:48:40.923090 Performing sanity checks on run/compiled/deepdive.conf.json:
+2018-01-21 21:48:40.982158  checking if input_extractors_well_defined
+2018-01-21 21:48:40.982325  checking if input_schema_wellformed
+2018-01-21 21:48:40.982569 Normalizing and adding built-in processes to the data flow to compile:
+2018-01-21 21:48:40.982950  run/compiled/config-0.00-init_objects.json
+2018-01-21 21:48:41.005183  run/compiled/config-0.01-parse_calibration.json
+2018-01-21 21:48:41.021690  run/compiled/config-0.01-parse_schema.json
+2018-01-21 21:48:41.062227  run/compiled/config-0.51-add_init_app.json
+2018-01-21 21:48:41.082425  run/compiled/config-0.52-input_loader.json
+2018-01-21 21:48:41.102613  run/compiled/config-1.00-qualified_names.json
+2018-01-21 21:48:41.130528  run/compiled/config-1.01-parse_inference_rules.json
+2018-01-21 21:48:41.183893  run/compiled/config-2.01-grounding.json
+2018-01-21 21:48:41.361365  run/compiled/config-2.02-learning_inference.json
+2018-01-21 21:48:41.394737  run/compiled/config-2.03-calibration_plots.json
+2018-01-21 21:48:41.418925  run/compiled/config-9.98-ensure_init_app.json
+2018-01-21 21:48:41.445033  run/compiled/config-9.99-dependencies.json
+2018-01-21 21:48:41.484820  run/compiled/config.json
+2018-01-21 21:48:41.487277 Validating run/compiled/config.json:
+2018-01-21 21:48:41.598649  checking if compiled_base_relations_have_input_data
+2018-01-21 21:48:41.598828  checking if compiled_dependencies_correct
+2018-01-21 21:48:41.598911  checking if compiled_input_output_well_defined
+2018-01-21 21:48:41.598974  checking if compiled_output_uniquely_defined
+2018-01-21 21:48:41.599195 Compiling executable code into:
+2018-01-21 21:48:41.599893  run/compiled/code-cmd_extractor.json
+2018-01-21 21:48:41.636790  run/compiled/code-dataflow_dot.json
+2018-01-21 21:48:41.688465  run/compiled/code-Makefile.json
+2018-01-21 21:48:41.737412  run/compiled/code-sql_extractor.json
+2018-01-21 21:48:41.759744  run/compiled/code-tsv_extractor.json
+2018-01-21 21:48:41.791340 Generating files:
+2018-01-21 21:48:41.833698  run/process/init/app/run.sh
+2018-01-21 21:48:41.840024  run/process/init/relation/ards_dbdata/run.sh
+2018-01-21 21:48:41.845564  run/process/init/relation/articles/run.sh
+2018-01-21 21:48:41.852419  run/process/ext_ards_label/run.sh
+2018-01-21 21:48:41.858776  run/process/ext_ards_label_resolved/run.sh
+2018-01-21 21:48:41.863675  run/process/ext_has_effect/run.sh
+2018-01-21 21:48:41.869584  run/process/grounding/variable_id_partition/run.sh
+2018-01-21 21:48:41.874883  run/process/grounding/variable/has_effect/assign_id/run.sh
+2018-01-21 21:48:41.879598  run/process/grounding/variable_holdout/run.sh
+2018-01-21 21:48:41.884728  run/process/grounding/variable/has_effect/dump/run.sh
+2018-01-21 21:48:41.891023  run/process/grounding/factor/inf_istrue_has_effect/materialize/run.sh
+2018-01-21 21:48:41.897017  run/process/grounding/weight_id_partition/run.sh
+2018-01-21 21:48:41.903848  run/process/grounding/global_weight_table/run.sh
+2018-01-21 21:48:41.909381  run/process/grounding/factor/inf_istrue_has_effect/assign_weight_id/run.sh
+2018-01-21 21:48:41.914037  run/process/grounding/factor/inf_istrue_has_effect/dump/run.sh
+2018-01-21 21:48:41.919116  run/process/grounding/factor/inf_istrue_has_effect/dump_weights/run.sh
+2018-01-21 21:48:41.925385  run/process/grounding/combine_factorgraph/run.sh
+2018-01-21 21:48:41.931942  run/process/model/learning/run.sh
+2018-01-21 21:48:41.938840  run/process/model/inference/run.sh
+2018-01-21 21:48:41.943635  run/process/model/load_weights/run.sh
+2018-01-21 21:48:41.948814  run/process/model/load_probabilities/run.sh
+2018-01-21 21:48:41.953960  run/process/model/calibration/run.sh
+2018-01-21 21:48:41.959282  run/dataflow.dot
+2018-01-21 21:48:41.966045  run/Makefile
+2018-01-21 21:48:41.976501  run/process/ext_ards_candidate_by_map_ards_candidate/run.sh
+2018-01-21 21:48:41.981507  run/process/ext_ards_feature_by_extract_ards_features/run.sh
+2018-01-21 21:48:41.986560  run/process/ext_ards_mention_by_map_ards_mention/run.sh
+2018-01-21 21:48:41.992370  run/process/ext_medicine_mention_by_map_medicine_mention/run.sh
+2018-01-21 21:48:42.079322  run/process/ext_sentence_by_nlp_markup/run.sh
+2018-01-21 21:48:42.086306  run/process/ext_sentences_by_modify_sentences/run.sh
+2018-01-21 21:48:42.135088  run/dataflow.svg
+2018-01-21 21:48:42.136186   (file:///home/xuyang/Projects/ADR2/run/dataflow.svg)
+2018-01-21 21:48:42.137561 "run/compiled" -> "20180121/214837.893558104"

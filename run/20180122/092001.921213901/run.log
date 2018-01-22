@@ -1,0 +1,80 @@
+2018-01-22 09:20:04.077248 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 09:20:04.077365 # run/20180122/092001.921213901/plan.sh
+2018-01-22 09:20:04.077395 # execution plan for data/sentence
+2018-01-22 09:20:04.077433 
+2018-01-22 09:20:04.077471 : ## process/init/app ##########################################################
+2018-01-22 09:20:04.077512 : # Done: 2018-01-21T21:48:59+0800 (11h 31m 2s ago)
+2018-01-22 09:20:04.077555 : process/init/app/run.sh
+2018-01-22 09:20:04.077599 : mark_done process/init/app
+2018-01-22 09:20:04.077642 : ##############################################################################
+2018-01-22 09:20:04.077685 
+2018-01-22 09:20:04.077730 
+2018-01-22 09:20:04.077774 : ## process/init/relation/articles ############################################
+2018-01-22 09:20:04.077818 : # Done: 2018-01-21T22:13:18+0800 (11h 6m 43s ago)
+2018-01-22 09:20:04.077864 : process/init/relation/articles/run.sh
+2018-01-22 09:20:04.077910 : mark_done process/init/relation/articles
+2018-01-22 09:20:04.077953 : ##############################################################################
+2018-01-22 09:20:04.077997 
+2018-01-22 09:20:04.078041 
+2018-01-22 09:20:04.078085 : ## data/articles #############################################################
+2018-01-22 09:20:04.078129 : # Done: 2018-01-21T22:13:18+0800 (11h 6m 43s ago)
+2018-01-22 09:20:04.078173 : # no-op
+2018-01-22 09:20:04.078219 : mark_done data/articles
+2018-01-22 09:20:04.078264 : ##############################################################################
+2018-01-22 09:20:04.078309 
+2018-01-22 09:20:04.078355 
+2018-01-22 09:20:04.078399 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 09:20:04.078442 # Done: N/A
+2018-01-22 09:20:04.078487 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 09:20:04.078531 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 09:20:04.078576 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 09:20:04.078621 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 09:20:04.078666 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 09:20:04.078711 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 09:20:04.078756 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 09:20:04.078801 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 09:20:04.078847 FROM articles R0
+2018-01-22 09:20:04.078892         
+2018-01-22 09:20:04.078937           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 09:20:04.083992 Executing with the following configuration:
+2018-01-22 09:20:04.084098  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 09:20:04.084151  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 09:20:04.084192  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 09:20:04.084237  output_relation_tmp=dd_tmp_sentence
+2018-01-22 09:20:04.084285 
+2018-01-22 09:20:04.367085 CREATE TABLE
+2018-01-22 09:20:04.726971 CREATE TABLE
+2018-01-22 09:20:04.815174 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 09:20:04.815337 FROM articles R0
+2018-01-22 09:20:04.815381         
+2018-01-22 09:20:04.815421           '
+2018-01-22 09:20:04.838198 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 09:20:07.475738 Building prefix dict from the default dictionary ...
+2018-01-22 09:20:07.476767 Loading model from cache /tmp/jieba.cache
+2018-01-22 09:20:07.811178 Loading model cost 0.335 seconds.
+2018-01-22 09:20:07.811408 Prefix dict has been built succesfully.
+2018-01-22 09:20:07.816033 Traceback (most recent call last):
+2018-01-22 09:20:07.816185   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 23, in <module>
+2018-01-22 09:20:07.816226     content='text',
+2018-01-22 09:20:07.816271   File "/home/xuyang/local/lib/python/ddlib/util.py", line 292, in tsv_extractor
+2018-01-22 09:20:07.816309     printer.write(out_row)
+2018-01-22 09:20:07.816345   File "/home/xuyang/local/lib/python/ddlib/util.py", line 215, in write
+2018-01-22 09:20:07.816381     print '\t'.join(print_pgtsv_element(x, n, t) for x,(n,t) in zip(out, self.fields))
+2018-01-22 09:20:07.816417   File "/home/xuyang/local/lib/python/ddlib/util.py", line 215, in <genexpr>
+2018-01-22 09:20:07.816462     print '\t'.join(print_pgtsv_element(x, n, t) for x,(n,t) in zip(out, self.fields))
+2018-01-22 09:20:07.816503   File "/home/xuyang/local/lib/python/ddlib/util.py", line 170, in print_pgtsv_element
+2018-01-22 09:20:07.816545     return '{%s}' % ','.join(print_pgtsv_element(e, n, t[:-2], array_nesting_depth=array_nesting_depth+1) for e in x)
+2018-01-22 09:20:07.816582   File "/home/xuyang/local/lib/python/ddlib/util.py", line 170, in <genexpr>
+2018-01-22 09:20:07.816621     return '{%s}' % ','.join(print_pgtsv_element(e, n, t[:-2], array_nesting_depth=array_nesting_depth+1) for e in x)
+2018-01-22 09:20:07.816657   File "/home/xuyang/local/lib/python/ddlib/util.py", line 179, in print_pgtsv_element
+2018-01-22 09:20:07.816694     name=n, declared_type=t, value_type=type(x), value=x,
+2018-01-22 09:20:07.816737 Exception: <exception str() failed>
+2018-01-22 09:20:08.085312 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (5910) - 没有那个进程
+2018-01-22 09:20:08.085460 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (5911) - 没有那个进程
+2018-01-22 09:20:08.085505 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (5912) - 没有那个进程
+2018-01-22 09:20:08.085544 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (5922) - 没有那个进程
+2018-01-22 09:20:08.085584 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (5924) - 没有那个进程
+2018-01-22 09:20:08.086779 ERROR:  missing data for column "sentence_index"
+2018-01-22 09:20:08.086943 CONTEXT:  COPY dd_tmp_sentence, line 1: "hello deepdive"
+2018-01-22 09:20:08.089240 [ERROR] command='"$DEEPDIVE_APP"/udf/fenci.py': PID 5912: finished with non-zero exit status (0)
+2018-01-22 09:20:08.089531 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138:  5917 已终止               deepdive-load "$output_relation_tmp" output_computed-*

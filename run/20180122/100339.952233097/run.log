@@ -1,0 +1,74 @@
+2018-01-22 10:03:42.023998 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 10:03:42.024109 # run/20180122/100339.952233097/plan.sh
+2018-01-22 10:03:42.024139 # execution plan for data/sentence
+2018-01-22 10:03:42.024174 
+2018-01-22 10:03:42.024208 : ## process/init/app ##########################################################
+2018-01-22 10:03:42.024244 : # Done: 2018-01-21T21:48:59+0800 (12h 14m 41s ago)
+2018-01-22 10:03:42.024281 : process/init/app/run.sh
+2018-01-22 10:03:42.024322 : mark_done process/init/app
+2018-01-22 10:03:42.024367 : ##############################################################################
+2018-01-22 10:03:42.024412 
+2018-01-22 10:03:42.024457 
+2018-01-22 10:03:42.024502 : ## process/init/relation/articles ############################################
+2018-01-22 10:03:42.024547 : # Done: 2018-01-21T22:13:18+0800 (11h 50m 22s ago)
+2018-01-22 10:03:42.024592 : process/init/relation/articles/run.sh
+2018-01-22 10:03:42.024637 : mark_done process/init/relation/articles
+2018-01-22 10:03:42.024681 : ##############################################################################
+2018-01-22 10:03:42.024726 
+2018-01-22 10:03:42.024770 
+2018-01-22 10:03:42.024816 : ## data/articles #############################################################
+2018-01-22 10:03:42.024861 : # Done: 2018-01-21T22:13:18+0800 (11h 50m 22s ago)
+2018-01-22 10:03:42.024905 : # no-op
+2018-01-22 10:03:42.024949 : mark_done data/articles
+2018-01-22 10:03:42.024992 : ##############################################################################
+2018-01-22 10:03:42.025035 
+2018-01-22 10:03:42.025079 
+2018-01-22 10:03:42.025462 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 10:03:42.025508 : # Done: 2018-01-22T09:57:11+0800 (6m 29s ago)
+2018-01-22 10:03:42.025553 # Done: 2018-01-22T09:57:11+0800 (6m 28s ago)
+2018-01-22 10:03:42.025598 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 10:03:42.025641 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 10:03:42.025686 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 10:03:42.025728 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 10:03:42.025773 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 10:03:42.025818 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 10:03:42.025863 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 10:03:42.025909 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 10:03:42.025954 FROM articles R0
+2018-01-22 10:03:42.025999         
+2018-01-22 10:03:42.026045           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 10:03:42.030629 Executing with the following configuration:
+2018-01-22 10:03:42.030752  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 10:03:42.030802  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 10:03:42.030840  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 10:03:42.030878  output_relation_tmp=dd_tmp_sentence
+2018-01-22 10:03:42.030917 
+2018-01-22 10:03:42.313817 CREATE TABLE
+2018-01-22 10:03:42.683633 CREATE TABLE
+2018-01-22 10:03:42.764238 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 10:03:42.764383 FROM articles R0
+2018-01-22 10:03:42.764425         
+2018-01-22 10:03:42.764463           '
+2018-01-22 10:03:42.812720 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 10:03:45.289181 Building prefix dict from the default dictionary ...
+2018-01-22 10:03:45.290797 Loading model from cache /tmp/jieba.cache
+2018-01-22 10:03:45.778047 Loading model cost 0.489 seconds.
+2018-01-22 10:03:45.778195 Prefix dict has been built succesfully.
+2018-01-22 10:03:45.778236 Traceback (most recent call last):
+2018-01-22 10:03:45.778275   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 10:03:45.778320     content='text',
+2018-01-22 10:03:45.778365   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 10:03:45.778408     for out_row in generator(**row._asdict()):
+2018-01-22 10:03:45.778451   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 26, in extract
+2018-01-22 10:03:45.778493     jieba.load_userdict('udf/dict.txt')
+2018-01-22 10:03:45.778533   File "/usr/local/lib/python2.7/dist-packages/jieba/__init__.py", line 374, in load_userdict
+2018-01-22 10:03:45.778574     f = open(f, 'rb')
+2018-01-22 10:03:45.778614 IOError: [Errno 2] No such file or directory: 'udf/dict.txt'
+2018-01-22 10:03:45.998132 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (18020) - 没有那个进程
+2018-01-22 10:03:45.998285 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (18021) - 没有那个进程
+2018-01-22 10:03:45.998325 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (18022) - 没有那个进程
+2018-01-22 10:03:45.998576 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (18033) - 没有那个进程
+2018-01-22 10:03:45.998642 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (18034) - 没有那个进程
+2018-01-22 10:03:45.999280 COPY 0
+2018-01-22 10:03:46.001808 [ERROR] command='"$DEEPDIVE_APP"/udf/fenci.py': PID 18022: finished with non-zero exit status (0)
+2018-01-22 10:03:46.002069 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 18027 已终止               deepdive-load "$output_relation_tmp" output_computed-*
