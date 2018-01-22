@@ -1,0 +1,101 @@
+2018-01-21 22:02:48.376089 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-21 22:02:48.376246 # run/20180121/220246.969504625/plan.sh
+2018-01-21 22:02:48.376292 # execution plan for data/sentence
+2018-01-21 22:02:48.376333 
+2018-01-21 22:02:48.376372 : ## process/init/app ##########################################################
+2018-01-21 22:02:48.376411 : # Done: 2018-01-21T21:48:59+0800 (13m 48s ago)
+2018-01-21 22:02:48.376451 : process/init/app/run.sh
+2018-01-21 22:02:48.376494 : mark_done process/init/app
+2018-01-21 22:02:48.376534 : ##############################################################################
+2018-01-21 22:02:48.376574 
+2018-01-21 22:02:48.376615 
+2018-01-21 22:02:48.376656 : ## process/init/relation/articles ############################################
+2018-01-21 22:02:48.376697 : # Done: 2018-01-21T21:49:00+0800 (13m 47s ago)
+2018-01-21 22:02:48.376738 : process/init/relation/articles/run.sh
+2018-01-21 22:02:48.376779 : mark_done process/init/relation/articles
+2018-01-21 22:02:48.376819 : ##############################################################################
+2018-01-21 22:02:48.376859 
+2018-01-21 22:02:48.376899 
+2018-01-21 22:02:48.376939 : ## data/articles #############################################################
+2018-01-21 22:02:48.376977 : # Done: 2018-01-21T21:49:00+0800 (13m 47s ago)
+2018-01-21 22:02:48.377018 : # no-op
+2018-01-21 22:02:48.377059 : mark_done data/articles
+2018-01-21 22:02:48.377099 : ##############################################################################
+2018-01-21 22:02:48.377140 
+2018-01-21 22:02:48.377181 
+2018-01-21 22:02:48.377221 ## process/ext_sentence_by_nlp_markup ########################################
+2018-01-21 22:02:48.377261 # Done: N/A
+2018-01-21 22:02:48.377303 process/ext_sentence_by_nlp_markup/run.sh
+2018-01-21 22:02:48.377343 ++ dirname process/ext_sentence_by_nlp_markup/run.sh
+2018-01-21 22:02:48.377385 + cd process/ext_sentence_by_nlp_markup
+2018-01-21 22:02:48.377425 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_markup
+2018-01-21 22:02:48.377463 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_markup
+2018-01-21 22:02:48.377503 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-21 22:02:48.377543 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-21 22:02:48.377584 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-21 22:02:48.377625 FROM articles R0
+2018-01-21 22:02:48.377664         
+2018-01-21 22:02:48.377700           ' 'command="$DEEPDIVE_APP"/udf/tokenize.py' output_relation=sentence
+2018-01-21 22:02:48.386194 Executing with the following configuration:
+2018-01-21 22:02:48.386315  DEEPDIVE_NUM_PROCESSES=3
+2018-01-21 22:02:48.386379  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-21 22:02:48.386442  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-21 22:02:48.386489  output_relation_tmp=dd_tmp_sentence
+2018-01-21 22:02:48.386534 
+2018-01-21 22:02:48.831392 CREATE TABLE
+2018-01-21 22:02:49.211252 CREATE TABLE
+2018-01-21 22:02:49.287309 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-21 22:02:49.287461 FROM articles R0
+2018-01-21 22:02:49.287511         
+2018-01-21 22:02:49.287554           '
+2018-01-21 22:02:49.349059 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-21 22:02:51.724399 Traceback (most recent call last):
+2018-01-21 22:02:51.724553   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 5, in <module>
+2018-01-21 22:02:51.724598     from deepdive import *
+2018-01-21 22:02:51.724638   File "/home/xuyang/local/lib/python/deepdive.py", line 3, in <module>
+2018-01-21 22:02:51.724675     from ddlib.util import tsv_extractor,over,returns
+2018-01-21 22:02:51.724711   File "/home/xuyang/local/lib/python/ddlib/__init__.py", line 3, in <module>
+2018-01-21 22:02:51.724745     from util import *
+2018-01-21 22:02:51.724779   File "/home/xuyang/local/lib/python/ddlib/util.py", line 4, in <module>
+2018-01-21 22:02:51.724818     from inspect import isgeneratorfunction,getargspec
+2018-01-21 22:02:51.724857   File "/usr/lib/python2.7/inspect.py", line 39, in <module>
+2018-01-21 22:02:51.724890     import tokenize
+2018-01-21 22:02:51.724923   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 7, in <module>
+2018-01-21 22:02:51.724955     @tsv_extractor
+2018-01-21 22:02:51.724988 NameError: name 'tsv_extractor' is not defined
+2018-01-21 22:02:51.999196 Traceback (most recent call last):
+2018-01-21 22:02:51.999345   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 5, in <module>
+2018-01-21 22:02:51.999390     from deepdive import *
+2018-01-21 22:02:51.999431   File "/home/xuyang/local/lib/python/deepdive.py", line 3, in <module>
+2018-01-21 22:02:51.999468     from ddlib.util import tsv_extractor,over,returns
+2018-01-21 22:02:51.999505   File "/home/xuyang/local/lib/python/ddlib/__init__.py", line 3, in <module>
+2018-01-21 22:02:51.999539     from util import *
+2018-01-21 22:02:51.999573   File "/home/xuyang/local/lib/python/ddlib/util.py", line 4, in <module>
+2018-01-21 22:02:51.999609     from inspect import isgeneratorfunction,getargspec
+2018-01-21 22:02:51.999649   File "/usr/lib/python2.7/inspect.py", line 39, in <module>
+2018-01-21 22:02:51.999684     import tokenize
+2018-01-21 22:02:52.000073   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 7, in <module>
+2018-01-21 22:02:52.000114     @tsv_extractor
+2018-01-21 22:02:52.000146 NameError: name 'tsv_extractor' is not defined
+2018-01-21 22:02:52.232516 Traceback (most recent call last):
+2018-01-21 22:02:52.232650   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 5, in <module>
+2018-01-21 22:02:52.232695     from deepdive import *
+2018-01-21 22:02:52.232733   File "/home/xuyang/local/lib/python/deepdive.py", line 3, in <module>
+2018-01-21 22:02:52.232770     from ddlib.util import tsv_extractor,over,returns
+2018-01-21 22:02:52.232808   File "/home/xuyang/local/lib/python/ddlib/__init__.py", line 3, in <module>
+2018-01-21 22:02:52.232853     from util import *
+2018-01-21 22:02:52.232893   File "/home/xuyang/local/lib/python/ddlib/util.py", line 4, in <module>
+2018-01-21 22:02:52.232935     from inspect import isgeneratorfunction,getargspec
+2018-01-21 22:02:52.232979   File "/usr/lib/python2.7/inspect.py", line 39, in <module>
+2018-01-21 22:02:52.233026     import tokenize
+2018-01-21 22:02:52.233069   File "/home/xuyang/Projects/ADR2/udf/tokenize.py", line 7, in <module>
+2018-01-21 22:02:52.233115     @tsv_extractor
+2018-01-21 22:02:52.233160 NameError: name 'tsv_extractor' is not defined
+2018-01-21 22:02:52.411456 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (31597) - 没有那个进程
+2018-01-21 22:02:52.411612 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (31598) - 没有那个进程
+2018-01-21 22:02:52.411657 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (31599) - 没有那个进程
+2018-01-21 22:02:52.411714 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (31609) - 没有那个进程
+2018-01-21 22:02:52.411757 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (31610) - 没有那个进程
+2018-01-21 22:02:52.412382 COPY 0
+2018-01-21 22:02:52.414372 [ERROR] command='"$DEEPDIVE_APP"/udf/tokenize.py': PID 31597: finished with non-zero exit status (0)
+2018-01-21 22:02:52.414814 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 31604 已终止               deepdive-load "$output_relation_tmp" output_computed-*

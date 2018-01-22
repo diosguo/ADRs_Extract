@@ -1,0 +1,24 @@
+2018-01-22 10:41:05.943706 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do articles
+2018-01-22 10:41:05.943867 # run/20180122/104104.216748317/plan.sh
+2018-01-22 10:41:05.943911 # execution plan for data/articles
+2018-01-22 10:41:05.943948 
+2018-01-22 10:41:05.943982 : ## process/init/app ##########################################################
+2018-01-22 10:41:05.944017 : # Done: 2018-01-21T21:48:59+0800 (12h 52m 5s ago)
+2018-01-22 10:41:05.944054 : process/init/app/run.sh
+2018-01-22 10:41:05.944092 : mark_done process/init/app
+2018-01-22 10:41:05.944127 : ##############################################################################
+2018-01-22 10:41:05.944169 
+2018-01-22 10:41:05.944211 
+2018-01-22 10:41:05.944259 ## process/init/relation/articles ############################################
+2018-01-22 10:41:05.944302 # Done: 2018-01-21T22:13:18+0800 (12h 27m 46s ago)
+2018-01-22 10:41:05.944340 process/init/relation/articles/run.sh
+2018-01-22 10:41:05.944380 ++ dirname process/init/relation/articles/run.sh
+2018-01-22 10:41:05.944421 + cd process/init/relation/articles
+2018-01-22 10:41:05.944461 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-22 10:41:05.944507 + DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-22 10:41:05.944549 + deepdive create table articles
+2018-01-22 10:41:06.125406 CREATE TABLE
+2018-01-22 10:41:06.127912 + deepdive load articles
+2018-01-22 10:41:06.222984 Loading articles from input/articles.csv (csv format)
+2018-01-22 10:41:06.347161 ERROR:  missing data for column "content"
+2018-01-22 10:41:06.347317 CONTEXT:  COPY articles, line 2: ""

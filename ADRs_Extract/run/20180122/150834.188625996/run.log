@@ -1,0 +1,72 @@
+2018-01-22 15:08:36.518801 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 15:08:36.518923 # run/20180122/150834.188625996/plan.sh
+2018-01-22 15:08:36.518965 # execution plan for data/sentence
+2018-01-22 15:08:36.519001 
+2018-01-22 15:08:36.519039 : ## process/init/app ##########################################################
+2018-01-22 15:08:36.519143 : # Done: 2018-01-21T21:48:59+0800 (17h 19m 35s ago)
+2018-01-22 15:08:36.519243 : process/init/app/run.sh
+2018-01-22 15:08:36.519307 : mark_done process/init/app
+2018-01-22 15:08:36.519351 : ##############################################################################
+2018-01-22 15:08:36.519396 
+2018-01-22 15:08:36.519437 
+2018-01-22 15:08:36.519481 : ## process/init/relation/articles ############################################
+2018-01-22 15:08:36.519526 : # Done: 2018-01-22T11:26:01+0800 (3h 42m 33s ago)
+2018-01-22 15:08:36.519572 : process/init/relation/articles/run.sh
+2018-01-22 15:08:36.519617 : mark_done process/init/relation/articles
+2018-01-22 15:08:36.519660 : ##############################################################################
+2018-01-22 15:08:36.519702 
+2018-01-22 15:08:36.519746 
+2018-01-22 15:08:36.519790 : ## data/articles #############################################################
+2018-01-22 15:08:36.519835 : # Done: 2018-01-22T11:26:01+0800 (3h 42m 33s ago)
+2018-01-22 15:08:36.519879 : # no-op
+2018-01-22 15:08:36.519922 : mark_done data/articles
+2018-01-22 15:08:36.519966 : ##############################################################################
+2018-01-22 15:08:36.520010 
+2018-01-22 15:08:36.520053 
+2018-01-22 15:08:36.520097 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 15:08:36.520140 # Done: 2018-01-22T14:58:16+0800 (10m 18s ago)
+2018-01-22 15:08:36.520184 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:08:36.520227 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:08:36.520272 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:36.520316 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:36.520361 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:08:36.520406 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:08:36.520449 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:08:36.520495 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:08:36.520537 FROM articles R0
+2018-01-22 15:08:36.520580         
+2018-01-22 15:08:36.520623           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 15:08:36.520667 Executing with the following configuration:
+2018-01-22 15:08:36.520710  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 15:08:36.520757  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 15:08:36.520803  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 15:08:36.520844  output_relation_tmp=dd_tmp_sentence
+2018-01-22 15:08:36.520887 
+2018-01-22 15:08:36.787706 CREATE TABLE
+2018-01-22 15:08:37.133474 CREATE TABLE
+2018-01-22 15:08:37.213148 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:08:37.213301 FROM articles R0
+2018-01-22 15:08:37.213350         
+2018-01-22 15:08:37.213395           '
+2018-01-22 15:08:37.235509   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 35
+2018-01-22 15:08:37.235910     if sent=='' or sent=' ' :
+2018-01-22 15:08:37.236185                        ^
+2018-01-22 15:08:37.236360 SyntaxError: invalid syntax
+2018-01-22 15:08:37.238232   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 35
+2018-01-22 15:08:37.238560     if sent=='' or sent=' ' :
+2018-01-22 15:08:37.238818                        ^
+2018-01-22 15:08:37.238992 SyntaxError: invalid syntax
+2018-01-22 15:08:37.240351   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 35
+2018-01-22 15:08:37.240586     if sent=='' or sent=' ' :
+2018-01-22 15:08:37.240810                        ^
+2018-01-22 15:08:37.240868 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 15:08:37.241017 SyntaxError: invalid syntax
+2018-01-22 15:08:37.246444 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (32624) - 没有那个进程
+2018-01-22 15:08:37.248412 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (32625) - 没有那个进程
+2018-01-22 15:08:37.248517 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (32626) - 没有那个进程
+2018-01-22 15:08:37.248562 [ERROR] command='"$DEEPDIVE_APP"/udf/fenci.py': PID 32624: finished with non-zero exit status (0)
+2018-01-22 15:08:37.249454 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 32630 已终止               mkmimo process-*.output \> output_computed-*
+2018-01-22 15:08:37.249574 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 32631 已终止               deepdive-load "$output_relation_tmp" output_computed-*
+2018-01-22 15:08:37.249620 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 32637 已终止               mkmimo feed_processes-* \> process-*.input
+2018-01-22 15:08:37.252124 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 1: 32636 已终止               deepdive-db unload "$input_sql" "$DEEPDIVE_LOAD_FORMAT" feed_processes-*
+2018-01-22 15:08:37.334408 COPY 0

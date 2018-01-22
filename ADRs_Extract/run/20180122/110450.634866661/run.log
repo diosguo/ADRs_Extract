@@ -1,0 +1,94 @@
+2018-01-22 11:04:52.059160 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 11:04:52.059310 # run/20180122/110450.634866661/plan.sh
+2018-01-22 11:04:52.059354 # execution plan for data/sentence
+2018-01-22 11:04:52.059385 
+2018-01-22 11:04:52.059418 : ## process/init/app ##########################################################
+2018-01-22 11:04:52.059451 : # Done: 2018-01-21T21:48:59+0800 (13h 15m 51s ago)
+2018-01-22 11:04:52.059488 : process/init/app/run.sh
+2018-01-22 11:04:52.059529 : mark_done process/init/app
+2018-01-22 11:04:52.059567 : ##############################################################################
+2018-01-22 11:04:52.059608 
+2018-01-22 11:04:52.059648 
+2018-01-22 11:04:52.059688 : ## process/init/relation/articles ############################################
+2018-01-22 11:04:52.059729 : # Done: 2018-01-22T10:43:49+0800 (21m 1s ago)
+2018-01-22 11:04:52.059770 : process/init/relation/articles/run.sh
+2018-01-22 11:04:52.059812 : mark_done process/init/relation/articles
+2018-01-22 11:04:52.059853 : ##############################################################################
+2018-01-22 11:04:52.059894 
+2018-01-22 11:04:52.059934 
+2018-01-22 11:04:52.060002 : ## data/articles #############################################################
+2018-01-22 11:04:52.060049 : # Done: 2018-01-22T10:43:49+0800 (21m 1s ago)
+2018-01-22 11:04:52.060093 : # no-op
+2018-01-22 11:04:52.060137 : mark_done data/articles
+2018-01-22 11:04:52.060180 : ##############################################################################
+2018-01-22 11:04:52.060224 
+2018-01-22 11:04:52.060268 
+2018-01-22 11:04:52.060312 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 11:04:52.060356 # Done: 2018-01-22T10:46:43+0800 (18m 7s ago)
+2018-01-22 11:04:52.060400 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 11:04:52.060443 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 11:04:52.060487 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 11:04:52.060530 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 11:04:52.060573 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 11:04:52.060617 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 11:04:52.060660 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 11:04:52.060705 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 11:04:52.060749 FROM articles R0
+2018-01-22 11:04:52.060792         
+2018-01-22 11:04:52.060836           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 11:04:52.069768 Executing with the following configuration:
+2018-01-22 11:04:52.069888  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 11:04:52.069941  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 11:04:52.069995  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 11:04:52.070050  output_relation_tmp=dd_tmp_sentence
+2018-01-22 11:04:52.070103 
+2018-01-22 11:04:52.334747 CREATE TABLE
+2018-01-22 11:04:52.700970 CREATE TABLE
+2018-01-22 11:04:52.782176 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 11:04:52.782325 FROM articles R0
+2018-01-22 11:04:52.782371         
+2018-01-22 11:04:52.782416           '
+2018-01-22 11:04:52.817623 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 11:04:55.395631 Building prefix dict from the default dictionary ...
+2018-01-22 11:04:55.397468 Loading model from cache /tmp/jieba.cache
+2018-01-22 11:04:55.420284 Building prefix dict from the default dictionary ...
+2018-01-22 11:04:55.421968 Loading model from cache /tmp/jieba.cache
+2018-01-22 11:04:55.546553 Building prefix dict from the default dictionary ...
+2018-01-22 11:04:55.548361 Loading model from cache /tmp/jieba.cache
+2018-01-22 11:04:55.813791 Loading model cost 0.394 seconds.
+2018-01-22 11:04:55.813959 Prefix dict has been built succesfully.
+2018-01-22 11:04:55.887762 Loading model cost 0.492 seconds.
+2018-01-22 11:04:55.887944 Prefix dict has been built succesfully.
+2018-01-22 11:04:55.950262 Traceback (most recent call last):
+2018-01-22 11:04:55.950416   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 11:04:55.950459     content='text',
+2018-01-22 11:04:55.950498   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 11:04:55.950539     for out_row in generator(**row._asdict()):
+2018-01-22 11:04:55.950578   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 42, in extract
+2018-01-22 11:04:55.950616     file.write(doc_id+','+str(index)+','+' '.join(tokens))
+2018-01-22 11:04:55.950653 ValueError: I/O operation on closed file
+2018-01-22 11:04:56.001666 Loading model cost 0.455 seconds.
+2018-01-22 11:04:56.001832 Prefix dict has been built succesfully.
+2018-01-22 11:04:56.050299 Traceback (most recent call last):
+2018-01-22 11:04:56.050467   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 11:04:56.050586     content='text',
+2018-01-22 11:04:56.050645   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 11:04:56.050718     for out_row in generator(**row._asdict()):
+2018-01-22 11:04:56.050776   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 42, in extract
+2018-01-22 11:04:56.050848     file.write(doc_id+','+str(index)+','+' '.join(tokens))
+2018-01-22 11:04:56.050906 ValueError: I/O operation on closed file
+2018-01-22 11:04:56.145642 Traceback (most recent call last):
+2018-01-22 11:04:56.145801   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 24, in <module>
+2018-01-22 11:04:56.145896     content='text',
+2018-01-22 11:04:56.145945   File "/home/xuyang/local/lib/python/ddlib/util.py", line 291, in tsv_extractor
+2018-01-22 11:04:56.146112     for out_row in generator(**row._asdict()):
+2018-01-22 11:04:56.146170   File "/home/xuyang/Projects/ADR2/udf/fenci.py", line 42, in extract
+2018-01-22 11:04:56.146222     file.write(doc_id+','+str(index)+','+' '.join(tokens))
+2018-01-22 11:04:56.146273 ValueError: I/O operation on closed file
+2018-01-22 11:04:56.317627 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (23618) - 没有那个进程
+2018-01-22 11:04:56.319076 /home/xuyang/local/util/compute-driver/local/compute-execute: 第 140 行: kill: (23632) - 没有那个进程
+2018-01-22 11:04:56.322207 [ERROR] command='"$DEEPDIVE_APP"/udf/fenci.py': PID 23618: finished with non-zero exit status (0)
+2018-01-22 11:04:56.323215 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 23624 已终止               mkmimo process-*.output \> output_computed-*
+2018-01-22 11:04:56.323356 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 23625 已终止               deepdive-load "$output_relation_tmp" output_computed-*
+2018-01-22 11:04:56.323398 /home/xuyang/local/util/compute-driver/local/compute-execute: 行 138: 23631 已终止               deepdive-db unload "$input_sql" "$DEEPDIVE_LOAD_FORMAT" feed_processes-*
+2018-01-22 11:04:56.328195 COPY 3

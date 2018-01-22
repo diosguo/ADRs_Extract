@@ -1,0 +1,83 @@
+2018-01-22 15:20:13.710087 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 15:20:13.710228 # run/20180122/151946.948063194/plan.sh
+2018-01-22 15:20:13.710272 # execution plan for data/sentence
+2018-01-22 15:20:13.710310 
+2018-01-22 15:20:13.710346 : ## process/init/app ##########################################################
+2018-01-22 15:20:13.710381 : # Done: 2018-01-21T21:48:59+0800 (17h 30m 48s ago)
+2018-01-22 15:20:13.710422 : process/init/app/run.sh
+2018-01-22 15:20:13.710460 : mark_done process/init/app
+2018-01-22 15:20:13.710498 : ##############################################################################
+2018-01-22 15:20:13.710531 
+2018-01-22 15:20:13.710565 
+2018-01-22 15:20:13.710606 : ## process/init/relation/articles ############################################
+2018-01-22 15:20:13.710649 : # Done: 2018-01-22T11:26:01+0800 (3h 53m 46s ago)
+2018-01-22 15:20:13.710694 : process/init/relation/articles/run.sh
+2018-01-22 15:20:13.710734 : mark_done process/init/relation/articles
+2018-01-22 15:20:13.710773 : ##############################################################################
+2018-01-22 15:20:13.710813 
+2018-01-22 15:20:13.710855 
+2018-01-22 15:20:13.710892 : ## data/articles #############################################################
+2018-01-22 15:20:13.710924 : # Done: 2018-01-22T11:26:01+0800 (3h 53m 46s ago)
+2018-01-22 15:20:13.710960 : # no-op
+2018-01-22 15:20:13.711000 : mark_done data/articles
+2018-01-22 15:20:13.711036 : ##############################################################################
+2018-01-22 15:20:13.711073 
+2018-01-22 15:20:13.711112 
+2018-01-22 15:20:13.711151 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 15:20:13.711190 : # Done: 2018-01-22T15:11:30+0800 (8m 17s ago)
+2018-01-22 15:20:13.711227 # Done: 2018-01-22T15:11:30+0800 (8m 16s ago)
+2018-01-22 15:20:13.711264 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:20:13.711336 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 15:20:13.711380 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 15:20:13.711420 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:20:13.711463 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 15:20:13.711503 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:20:13.711542 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 15:20:13.711583 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:20:13.711625 FROM articles R0
+2018-01-22 15:20:13.711664         
+2018-01-22 15:20:13.711703           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 15:20:13.714696 Executing with the following configuration:
+2018-01-22 15:20:13.714800  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 15:20:13.714856  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 15:20:13.714904  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 15:20:13.714946  output_relation_tmp=dd_tmp_sentence
+2018-01-22 15:20:13.714993 
+2018-01-22 15:20:13.986797 CREATE TABLE
+2018-01-22 15:20:14.352632 CREATE TABLE
+2018-01-22 15:20:14.433647 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 15:20:14.433813 FROM articles R0
+2018-01-22 15:20:14.433860         
+2018-01-22 15:20:14.433906           '
+2018-01-22 15:20:14.462780 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 15:20:16.623667 Building prefix dict from the default dictionary ...
+2018-01-22 15:20:16.625715 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:20:16.953185 Loading model cost 0.329 seconds.
+2018-01-22 15:20:16.953346 Prefix dict has been built succesfully.
+2018-01-22 15:20:17.767475 Building prefix dict from the default dictionary ...
+2018-01-22 15:20:17.769342 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:20:17.866305 Building prefix dict from the default dictionary ...
+2018-01-22 15:20:17.868255 Loading model from cache /tmp/jieba.cache
+2018-01-22 15:20:18.294864 Loading model cost 0.527 seconds.
+2018-01-22 15:20:18.295553 Prefix dict has been built succesfully.
+2018-01-22 15:20:18.484851 Loading model cost 0.618 seconds.
+2018-01-22 15:20:18.485397 Prefix dict has been built succesfully.
+2018-01-22 15:22:09.567829 COPY 17959
+2018-01-22 15:22:09.571282 Replacing sentence with dd_tmp_sentence
+2018-01-22 15:22:09.835525 DROP TABLE
+2018-01-22 15:22:09.989054 ALTER TABLE
+2018-01-22 15:22:10.102792 ALTER TABLE
+2018-01-22 15:22:10.215484 DROP TABLE
+2018-01-22 15:22:12.775645 ANALYZE
+2018-01-22 15:22:12.779508 mark_done process/ext_sentence_by_nlp_fenci
+2018-01-22 15:22:12.784804 ##############################################################################
+2018-01-22 15:22:12.784931 
+2018-01-22 15:22:12.784975 
+2018-01-22 15:22:12.785010 ## data/sentence #############################################################
+2018-01-22 15:22:12.785043 : # Done: 2018-01-22T15:11:30+0800 (8m 17s ago)
+2018-01-22 15:22:12.785086 # Done: 2018-01-22T15:11:30+0800 (8m 16s ago)
+2018-01-22 15:22:12.785130 # no-op
+2018-01-22 15:22:12.785169 mark_done data/sentence
+2018-01-22 15:22:12.792099 ##############################################################################
+2018-01-22 15:22:12.792238 
+2018-01-22 15:22:12.792282 

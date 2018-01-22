@@ -1,0 +1,5 @@
+{
+  "path": "process/ext_sentence_by_nlp_fenci/run.sh",
+  "mode": "+x",
+  "content": "#!/usr/bin/env bash\n# tsv_extractor  process/ext_sentence_by_nlp_fenci\n# {\"input\":\" SELECT R0.id AS \\\"articles.R0.id\\\", R0.content AS \\\"articles.R0.content\\\"\\nFROM articles R0\\n        \\n          \",\"input_batch_size\":\"100000\",\"input_relations\":[\"articles\"],\"output_relation\":\"sentence\",\"parallelism\":\"1\",\"style\":\"tsv_extractor\",\"udf\":\"\\\"$DEEPDIVE_APP\\\"/udf/fenci.py\",\"dependencies_\":[],\"input_\":[\"data/articles\"],\"output_\":\"data/sentence\",\"name\":\"process/ext_sentence_by_nlp_fenci\"}\nset -xeuo pipefail\ncd \"$(dirname \"$0\")\"\n\n\n\nexport DEEPDIVE_CURRENT_PROCESS_NAME='process/ext_sentence_by_nlp_fenci'\nexport DEEPDIVE_LOAD_FORMAT=tsv\n\ndeepdive compute execute \\\n    input_sql=' SELECT R0.id AS \"articles.R0.id\", R0.content AS \"articles.R0.content\"\nFROM articles R0\n        \n          ' \\\n    command='\"$DEEPDIVE_APP\"/udf/fenci.py' \\\n    output_relation='sentence' \\\n    #\n\n\n"
+}

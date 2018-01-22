@@ -1,0 +1,24 @@
+2018-01-22 10:18:02.559759 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do articles
+2018-01-22 10:18:02.559884 # run/20180122/101800.738202234/plan.sh
+2018-01-22 10:18:02.559916 # execution plan for data/articles
+2018-01-22 10:18:02.559951 
+2018-01-22 10:18:02.559980 : ## process/init/app ##########################################################
+2018-01-22 10:18:02.560020 : # Done: 2018-01-21T21:48:59+0800 (12h 29m 1s ago)
+2018-01-22 10:18:02.560063 : process/init/app/run.sh
+2018-01-22 10:18:02.560099 : mark_done process/init/app
+2018-01-22 10:18:02.560132 : ##############################################################################
+2018-01-22 10:18:02.560168 
+2018-01-22 10:18:02.560205 
+2018-01-22 10:18:02.560245 ## process/init/relation/articles ############################################
+2018-01-22 10:18:02.560288 # Done: 2018-01-21T22:13:18+0800 (12h 4m 42s ago)
+2018-01-22 10:18:02.560330 process/init/relation/articles/run.sh
+2018-01-22 10:18:02.560372 ++ dirname process/init/relation/articles/run.sh
+2018-01-22 10:18:02.560416 + cd process/init/relation/articles
+2018-01-22 10:18:02.560459 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-22 10:18:02.560501 + DEEPDIVE_CURRENT_PROCESS_NAME=process/init/relation/articles
+2018-01-22 10:18:02.560543 + deepdive create table articles
+2018-01-22 10:18:02.723715 CREATE TABLE
+2018-01-22 10:18:02.725426 + deepdive load articles
+2018-01-22 10:18:02.794109 Loading articles from input/articles.csv (csv format)
+2018-01-22 10:18:02.921054 ERROR:  extra data after last expected column
+2018-01-22 10:18:02.921188 CONTEXT:  COPY articles, line 3: "100000122,2017年11月28日第一台手术，今天已经整整四十天了，手术后半个月上..."

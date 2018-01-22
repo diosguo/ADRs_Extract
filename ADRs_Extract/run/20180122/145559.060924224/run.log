@@ -1,0 +1,63 @@
+2018-01-22 14:56:00.470531 # on xuyang-HP-Pavilion-g4-Notebook-PC: deepdive do sentence
+2018-01-22 14:56:00.470653 # run/20180122/145559.060924224/plan.sh
+2018-01-22 14:56:00.470695 # execution plan for data/sentence
+2018-01-22 14:56:00.470732 
+2018-01-22 14:56:00.470771 : ## process/init/app ##########################################################
+2018-01-22 14:56:00.470818 : # Done: 2018-01-21T21:48:59+0800 (17h 7m ago)
+2018-01-22 14:56:00.470862 : process/init/app/run.sh
+2018-01-22 14:56:00.470906 : mark_done process/init/app
+2018-01-22 14:56:00.470951 : ##############################################################################
+2018-01-22 14:56:00.470994 
+2018-01-22 14:56:00.471037 
+2018-01-22 14:56:00.471081 : ## process/init/relation/articles ############################################
+2018-01-22 14:56:00.471123 : # Done: 2018-01-22T11:26:01+0800 (3h 29m 58s ago)
+2018-01-22 14:56:00.471165 : process/init/relation/articles/run.sh
+2018-01-22 14:56:00.471208 : mark_done process/init/relation/articles
+2018-01-22 14:56:00.471250 : ##############################################################################
+2018-01-22 14:56:00.471315 
+2018-01-22 14:56:00.471360 
+2018-01-22 14:56:00.471403 : ## data/articles #############################################################
+2018-01-22 14:56:00.471445 : # Done: 2018-01-22T11:26:01+0800 (3h 29m 58s ago)
+2018-01-22 14:56:00.471487 : # no-op
+2018-01-22 14:56:00.471528 : mark_done data/articles
+2018-01-22 14:56:00.471571 : ##############################################################################
+2018-01-22 14:56:00.471612 
+2018-01-22 14:56:00.471653 
+2018-01-22 14:56:00.471696 ## process/ext_sentence_by_nlp_fenci #########################################
+2018-01-22 14:56:00.471737 # Done: 2018-01-22T11:27:53+0800 (3h 28m 6s ago)
+2018-01-22 14:56:00.471780 process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 14:56:00.471822 ++ dirname process/ext_sentence_by_nlp_fenci/run.sh
+2018-01-22 14:56:00.471864 + cd process/ext_sentence_by_nlp_fenci
+2018-01-22 14:56:00.471905 + export DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 14:56:00.471946 + DEEPDIVE_CURRENT_PROCESS_NAME=process/ext_sentence_by_nlp_fenci
+2018-01-22 14:56:00.471988 + export DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 14:56:00.472031 + DEEPDIVE_LOAD_FORMAT=tsv
+2018-01-22 14:56:00.472073 + deepdive compute execute 'input_sql= SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 14:56:00.472115 FROM articles R0
+2018-01-22 14:56:00.472157         
+2018-01-22 14:56:00.472198           ' 'command="$DEEPDIVE_APP"/udf/fenci.py' output_relation=sentence
+2018-01-22 14:56:00.481442 Executing with the following configuration:
+2018-01-22 14:56:00.481580  DEEPDIVE_NUM_PROCESSES=3
+2018-01-22 14:56:00.481629  DEEPDIVE_NUM_PARALLEL_UNLOADS=1
+2018-01-22 14:56:00.481679  DEEPDIVE_NUM_PARALLEL_LOADS=1
+2018-01-22 14:56:00.481808  output_relation_tmp=dd_tmp_sentence
+2018-01-22 14:56:00.481880 
+2018-01-22 14:56:00.758247 CREATE TABLE
+2018-01-22 14:56:01.113554 CREATE TABLE
+2018-01-22 14:56:01.191444 unloading to feed_processes-1: ' SELECT R0.id AS "articles.R0.id", R0.content AS "articles.R0.content"
+2018-01-22 14:56:01.191592 FROM articles R0
+2018-01-22 14:56:01.191636         
+2018-01-22 14:56:01.191676           '
+2018-01-22 14:56:01.244673 Loading dd_tmp_sentence from output_computed-1 (tsv format)
+2018-01-22 14:56:03.463645 Building prefix dict from the default dictionary ...
+2018-01-22 14:56:03.469390 Loading model from cache /tmp/jieba.cache
+2018-01-22 14:56:03.923188 Loading model cost 0.459 seconds.
+2018-01-22 14:56:03.923374 Prefix dict has been built succesfully.
+2018-01-22 14:56:04.032561 Building prefix dict from the default dictionary ...
+2018-01-22 14:56:04.033865 Loading model from cache /tmp/jieba.cache
+2018-01-22 14:56:04.136023 Building prefix dict from the default dictionary ...
+2018-01-22 14:56:04.138318 Loading model from cache /tmp/jieba.cache
+2018-01-22 14:56:04.625315 Loading model cost 0.593 seconds.
+2018-01-22 14:56:04.625491 Prefix dict has been built succesfully.
+2018-01-22 14:56:04.670820 Loading model cost 0.534 seconds.
+2018-01-22 14:56:04.671607 Prefix dict has been built succesfully.

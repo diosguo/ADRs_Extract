@@ -1,0 +1,35 @@
+
+articles(
+	@key
+	@distributed_by
+    id      text,
+    @searchable
+    content text,
+	url_from text
+).
+
+sentence(
+	@key
+    @distributed_by
+    doc_id         text,
+    @key
+    sentence_index int,
+    @searchable
+    sentence_text  text,
+    tokens         text[],
+    lemmas         text[],
+    pos_tags       text[],
+    ner_tags       text[],
+    doc_offsets    int[],
+    dep_types      text[],
+    dep_tokens     int[]
+).
+
+function nlp_fenci over (
+        doc_id text,
+        content text
+) returns rows like sentence
+implementation "udf/fenci.py" handles tsv lines.
+
+sentence += nlp_fenci(doc_id, content) :-
+    articles(doc_id, content, _).

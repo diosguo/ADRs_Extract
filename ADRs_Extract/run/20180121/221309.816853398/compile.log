@@ -1,0 +1,46 @@
+2018-01-21 22:13:09.878569 "run/LATEST.COMPILE" -> "20180121/221309.816853398"
+2018-01-21 22:13:09.878718 "run/RUNNING.COMPILE" -> "20180121/221309.816853398"
+2018-01-21 22:13:09.878761 Parsing DeepDive application (/home/xuyang/Projects/ADR2) to generate:
+2018-01-21 22:13:09.878803  run/compiled/schema.json
+2018-01-21 22:13:09.878845   from app.ddlog
+2018-01-21 22:13:10.483903  run/compiled/deepdive.conf
+2018-01-21 22:13:10.484085   from app.ddlog
+2018-01-21 22:13:11.190522  run/compiled/deepdive.conf.json
+2018-01-21 22:13:11.696212 Performing sanity checks on run/compiled/deepdive.conf.json:
+2018-01-21 22:13:11.755781  checking if input_extractors_well_defined
+2018-01-21 22:13:11.755983  checking if input_schema_wellformed
+2018-01-21 22:13:11.756415 Normalizing and adding built-in processes to the data flow to compile:
+2018-01-21 22:13:11.757254  run/compiled/config-0.00-init_objects.json
+2018-01-21 22:13:11.772070  run/compiled/config-0.01-parse_calibration.json
+2018-01-21 22:13:11.788214  run/compiled/config-0.01-parse_schema.json
+2018-01-21 22:13:11.818963  run/compiled/config-0.51-add_init_app.json
+2018-01-21 22:13:11.833843  run/compiled/config-0.52-input_loader.json
+2018-01-21 22:13:11.850149  run/compiled/config-1.00-qualified_names.json
+2018-01-21 22:13:11.871972  run/compiled/config-1.01-parse_inference_rules.json
+2018-01-21 22:13:11.922431  run/compiled/config-2.01-grounding.json
+2018-01-21 22:13:12.081062  run/compiled/config-2.02-learning_inference.json
+2018-01-21 22:13:12.114374  run/compiled/config-2.03-calibration_plots.json
+2018-01-21 22:13:12.134674  run/compiled/config-9.98-ensure_init_app.json
+2018-01-21 22:13:12.150155  run/compiled/config-9.99-dependencies.json
+2018-01-21 22:13:12.164542  run/compiled/config.json
+2018-01-21 22:13:12.165769 Validating run/compiled/config.json:
+2018-01-21 22:13:12.242777  checking if compiled_base_relations_have_input_data
+2018-01-21 22:13:12.242990  checking if compiled_dependencies_correct
+2018-01-21 22:13:12.243091  checking if compiled_input_output_well_defined
+2018-01-21 22:13:12.243154  checking if compiled_output_uniquely_defined
+2018-01-21 22:13:12.243260 Compiling executable code into:
+2018-01-21 22:13:12.243802  run/compiled/code-cmd_extractor.json
+2018-01-21 22:13:12.260552  run/compiled/code-dataflow_dot.json
+2018-01-21 22:13:12.284984  run/compiled/code-Makefile.json
+2018-01-21 22:13:12.315527  run/compiled/code-sql_extractor.json
+2018-01-21 22:13:12.330086  run/compiled/code-tsv_extractor.json
+2018-01-21 22:13:12.349179 Generating files:
+2018-01-21 22:13:12.367239  run/process/init/app/run.sh
+2018-01-21 22:13:12.375742  run/process/init/relation/articles/run.sh
+2018-01-21 22:13:12.383389  run/dataflow.dot
+2018-01-21 22:13:12.389453  run/Makefile
+2018-01-21 22:13:12.396580  run/process/ext_sentence_by_nlp_markup/run.sh
+2018-01-21 22:13:12.438113  run/dataflow.svg
+2018-01-21 22:13:12.439357   (file:///home/xuyang/Projects/ADR2/run/dataflow.svg)
+2018-01-21 22:13:12.440754 "run/compiled" -> "run/compiled~"
+2018-01-21 22:13:12.441897 "run/compiled" -> "20180121/221309.816853398"

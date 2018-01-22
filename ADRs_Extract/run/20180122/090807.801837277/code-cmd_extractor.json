@@ -1,0 +1,10 @@
+{
+  "path": "process/init/app/run.sh",
+  "mode": "+x",
+  "content": "#!/usr/bin/env bash\n# cmd_extractor  process/init/app\n# {\"style\":\"cmd_extractor\",\"cmd\":\"\\n        deepdive db init\\n\\n        cd \\\"$DEEPDIVE_APP\\\"\\n        # run legacy schema.sql\\n        if [[ -r schema.sql ]]; then\\n            deepdive db prompt <schema.sql\\n        fi\\n        # run legacy init script\\n        if [[ -x input/init.sh ]]; then\\n            input/init.sh\\n        fi\\n        \",\"name\":\"process/init/app\"}\nset -xeuo pipefail\ncd \"$(dirname \"$0\")\"\n\n\n\nexport DEEPDIVE_CURRENT_PROCESS_NAME='process/init/app'\n\n        deepdive db init\n\n        cd \"$DEEPDIVE_APP\"\n        # run legacy schema.sql\n        if [[ -r schema.sql ]]; then\n            deepdive db prompt <schema.sql\n        fi\n        # run legacy init script\n        if [[ -x input/init.sh ]]; then\n            input/init.sh\n        fi\n        \n\n\n"
+}
+{
+  "path": "process/init/relation/articles/run.sh",
+  "mode": "+x",
+  "content": "#!/usr/bin/env bash\n# cmd_extractor  process/init/relation/articles\n# {\"style\":\"cmd_extractor\",\"cmd\":\"deepdive create table 'articles' && deepdive load 'articles'\",\"dependencies_\":[\"process/init/app\"],\"output_relation\":\"articles\",\"output_\":\"data/articles\",\"name\":\"process/init/relation/articles\"}\nset -xeuo pipefail\ncd \"$(dirname \"$0\")\"\n\n\n\nexport DEEPDIVE_CURRENT_PROCESS_NAME='process/init/relation/articles'\ndeepdive create table 'articles' && deepdive load 'articles'\n\n\n"
+}
